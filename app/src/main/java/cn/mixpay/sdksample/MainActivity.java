@@ -28,10 +28,10 @@ import cn.mixpay.server.RSASignatureTool;
 public class MainActivity extends Activity {
 
     public static final String TAG = "cn.mixpay.sample.MainActivity";
-
     public static final String APP_KEY = "6018842380091782";
-    //public static final String PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKzgKcAVdV938q/fK3NJDpThSvaXJQPooipTqVDFPHK+uhDUWIu0frwBy96lFWPQCLcXvOKhGi/WDmSaYVY8jIp53qm8r5cReAp1TqctV4lrHBxfWc6INeHj1Qk0jBwGhENQk/ySvEnk3/zTKOzWJh8blXLXIYrwD9mVqMBpDyDDAgMBAAECgYAhoTXd/Q6pNL9MQUDFm4evpKgdkkeMHBw32bCNWuEofTva/EQBYWpqDntnY3vmv9iCLab7+1UJyz1firy2tu6ry4+dlu/LdbEHqMwBPfcKHfwT2EG6Q41mA7KMlf6def+fBHDSRvWGFW82oiMVAUSvchr7lELGbarZuyHL1pFOiQJBAN7KHfNhmPoFhvFT6si5PXpl68a2k7HqjLIU23SiIQVK6RgqvNJolqzTKoE8r8AdGx9QDzDZAxuvTsb1JnmGEA0CQQDGpUeah9XIAEBfGWW1UHHe9QDmRoeynm678zdlsMNZy4O0U/1ucdbcnq5uFKglSDuxCvFURPuP1qUSipQVyPAPAkEAgFGjrJGzHZZfYdI2sYPYAA6CHYL9UIVKoitXNzdGk5jQ5sV+2iW5WzOJEMTWaW2aOI/RIA5uNtzjH78FeQsZZQJBAJ7/G9jscIis6tkzkt0Vjo9Ou3GVcnfdp/R4MBcM7M+qvbhQocENDVV5DVS+4/czYdPLVm6E6HWw8F9u3CiztLECQEh+qsa6qkGys2sJeNX0yOzgiqw3Iha1HMpLFIgx+Bo7hmZBtEZGtL1MpdgoYAv7bwHm3oi+FMYR8NmdNC9HrSs=";
-    public static final String PRIVATE_KEY = "MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBAKHZQ33yZG1KU/E4\n" +
+    // RSA private key 必须是pkcs8格式的
+    public static final String PRIVATE_KEY =
+            "MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBAKHZQ33yZG1KU/E4\n" +
             "FB1cAOhiBdd4wLR5dEzrbUhhJXGhQ0liOAwTDD24L08K3D4YRVr0f/geCLSdwon2\n" +
             "UjSKOsjvunXZPgEmiUKi6u7y9DtdJSe3dNE+Lh+yrFZtNw8vQcSTpBpuTd7PHoxN\n" +
             "VOMQM2aKt6ikXpB+qqiv5byVh4onAgMBAAECgYEAj2S+t0eaUnoYBQ96QsjQxRKT\n" +
@@ -46,14 +46,6 @@ public class MainActivity extends Activity {
             "RfCvjw98xU4wO2Xpru6jBWqwzTG9vrzf/3h8xnksgNWUBidjZu+XNbpGsuM8tk6b\n" +
             "msIUwSk2b35IETs/xQ==";
     public static final String MD5_SECRET_KEY = "019fafebfebf4a9d28c989254660f46c";
-
-
-    //qatang product
-    /*
-    public static final String APP_KEY = "6018371981903597";
-    public static final String PRIVATE_KEY = "MIICXAIBAAKBgQC1kkBDvAcZHpd6dsy7rbiKsdl+9rUGjvsK0qe7+sDk3MCnexKs0vukEBPZiC4ZS0tB6uhqob0BsYiQqZTkBu4rhBvwrOi44rJKbBUY0IsSEN8JjltYFBDPuF5RSYJitJVSkrh5F3SvNnC3BpDcmdzyePDLbke4IMyq21uxMp/5mwIDAQABAoGBAJ1czoOlz0UPBVum4JN74SebMhPef0/a1Wow3hyGG21+gR3mBW5xQJSVNo7efo1/ew77J0lbObLhCanOv3LNKtZoSEc+Sm8sGD+tUBBmlC2MvIupZztIUOUYBf/D6PB0Zj50ugOtS6xmCBq004LanRindYe3AfmRvp+b65QX/5MpAkEA3TthV/NaWoiRPg7xIGbYDYybRiqARtkVlRv5twl8zNXFbBGKaxu959VIj+w4p1EhX02p89hv8a9eNNh1awu5DwJBANIbPYCkmFVVkv0IZXgB2IB1EPQIx9SXLVTD1AAsI+Bs771pxftGSfxq4u/SFAHoGnk8qRvQRvIjAPuAqO4zvrUCQHQLttcUnpuIsW81FUSizcflrnlSx/Dh5FFP2GAryNwFckZquQnQBoB6P1LHXTxe8Tt1mKWBLc8/5xGfTZA2GP8CQHyQ5+LIMwSMyqu3+aivt3NZdKaqOgeBZb/Wpm8/vDmHfI+ZEWcLYjwEBu3WaERFHsT4QO6biiRuultiCUXIae0CQGWnMDpafODRuP0tvrePOKRTPqHiYcxGqNUGcM/f+pfxfpfatpkJXvuk8HoLZctbTPAyJ8tgDDnStiAoBY8TV/M=";
-    public static final String MD5_SECRET_KEY = "98ed9a1f17a7ebccf23e3f89c9cbac3d";
-    */
     private ArrayList<Order> orders = null;
     private MixpayAPI mixpay;
     private Order currentOrder = null;
