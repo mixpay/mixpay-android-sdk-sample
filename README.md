@@ -5,5 +5,5 @@
 * libs中的server sdk (server-sdk-xxx-xxx.jar)为服务器端sdk，不是必须的。此项目中用来演示如何给订单加密。
 
 ## 参考资料
-* [Mixpay android SDK 集成指南](https://www.mixpay.cn/docs/v1/android/)
+* [Mixpay Android SDK 集成指南](https://www.mixpay.cn/docs/v1/android/)
 * [Mixpay sever SDK](https://www.mixpay.cn/docs/v1/server/java/)
