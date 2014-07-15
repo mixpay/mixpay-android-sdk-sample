@@ -1,0 +1,5 @@
+#Mixpay Android SDK Sample
+
+## 说明
+* 示例项目使用AndroidStudio开发，gradle构建。
+* libs中的server sdk (server-sdk-xxx-xxx.jar)为服务器端sdk，不是必须的。此项目中用来演示如何给订单加密。
