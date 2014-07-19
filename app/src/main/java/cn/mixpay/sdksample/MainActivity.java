@@ -28,23 +28,23 @@ import cn.mixpay.server.RSASignatureTool;
 public class MainActivity extends Activity {
 
     public static final String TAG = "cn.mixpay.sample.MainActivity";
-    public static final String APP_KEY = "6018842380091782";
+    public static final String APP_KEY = "6018545979454885";
     // RSA private key 必须是pkcs8格式的
     public static final String PRIVATE_KEY =
-            "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBANkwXDLB0zy+KxA1\n" +
-            "2Ayj0dmdEnlzw7sg93x9yEDiIC190MH2qPYwXLqKb8UxTKT2RbGPzR7fdgnHatqm\n" +
-            "T9M8VAcSFyNErHSj05yWqQmHtfSz070KpvjrCV0y3j+R0vWOZKjCeLcWV2EJQSyN\n" +
-            "HaJQ85zURVZVmQ3EQTrC/b3XUfTBAgMBAAECgYEAgagRImv7gwO0CZVbSRBzMopG\n" +
-            "gSLO8mOX20XrynAz7XRyr5hk/bOZZ/NFDl+D9ebfbEUAmzGj8eqOq8ElXmFhd02B\n" +
-            "fvBTbNk62+XFTOcOmUwnAHihlZvIWNyry6XF0oCUOhSTr88Qj6dVBO6bOdMaMy61\n" +
-            "4uZrkhsBJdT1gRr95VECQQDx1LXt4mF9TbojhIBsBcJVRtanPQVqs0QMq+4qjb9+\n" +
-            "VQQiKqWWJBRcW4d5uB+8YrGUoRQ+imh2pdbKTt+YUl9PAkEA5eoJjg06P7rMpLT3\n" +
-            "ytD9TFuqAlmoI8Zt6uJAiaBKxrS55lU2C/Z7PPnf/nutC1BO/Ro10BXkaoHQV0BM\n" +
-            "kBbm7wJBANiDjW8yY/5//MuX8jLE5Tzcc4rAA32IisCdnlrTFkPRciX08NP/8YrP\n" +
-            "F/hOdXuBEWT04t8rpGO2DxyKiX4jIdkCQQCxY9qNbG1F4JWmey44oPjeYlcQyyYs\n" +
-            "vBvwvzJ2PWOUXrqUGajCoCFD0bNegQPpl8PqCr/8VffPqWsa9rRb9B+nAkAemh3v\n" +
-            "sUTxfxAucCq6F4VbT2UNDFi8keYqlM+5+rqKzbkXqKr/DJwsN0hqZhWdZvjTzjFl\n" +
-            "oLb+Blhz/ugm1D/u";
+            "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAPI8nZ0feMImd4FP\n" +
+            "K9CKQWz19lyfFNNJna9UkM2GofWe5wuWAZQIDWlgra0VttdedfFY4eSeZAupjk6Q\n" +
+            "fwGuyJ2fW8nCTQesZuzRj/KRtqiMjiFCoxa5nQuPuNGSyX+B/30xgBmKqxc66/xK\n" +
+            "TUD4aya/rQwK+JX+YqdbLchPzLUDAgMBAAECgYAstJEmEUvZEP5XKARfDVT7xfz8\n" +
+            "pQNT5y8pz4KV27YCPZxIYBvUdRP8kbIb0nkXEEDWFOBDsBOor1crGrHF3rr5OCIH\n" +
+            "+4HAhp46+OH6yXNqVBytWg8fkSsTxNbzF/E9DlxbIxh8whaabpruyPuaraiSRqdA\n" +
+            "0y2nhRd3BO8nNWy6QQJBAP69Rx8wA8h1VJ1tYJGhOKPQ+MLHS3VCizapaWCTyiBo\n" +
+            "tO4gtvwZyqOIEERKVeGRV3xiiwL9TFGqNBFfcEU/DmMCQQDzb3+pnen/MHHDo9Yv\n" +
+            "9Ni1+7bjHbDjZpEyljaV+mxYu6R7xCMcZEosjxeFW4vsIgy+okoeN3ftYdvcJHxO\n" +
+            "n7DhAkEAuBYQT3ljQnmHrDxejN71D2z0V82tug9ciyPiAujKKKGCHpOFqKj6xzKM\n" +
+            "js0pQtjFYB3WV1K01E8rUWKmv2PSAQJBALstFTT/JcfAoQizteHj2ql65PGWh8ch\n" +
+            "uyzxUQFaruo/RUag1fpjpqDCWWyBqoGi4LfHo0O+lKjioKGRMD9oDCECQDocrX+V\n" +
+            "GcJ0I3DeHVTQPSDY1J61nOGCd1XegWn3Ugf/k2tCxUCv7r1dYi7FPEFX/ZxwXAr2\n" +
+            "A7D+tclX1PlxWI0=";
     public static final String MD5_SECRET_KEY = "019fafebfebf4a9d28c989254660f46c";
     private ArrayList<Order> orders = null;
     private MixpayAPI mixpay;
@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
     public void renewOrderList(View view) {
         // 生成三个测试订单
         orders = new ArrayList<Order>();
-        Order wand = new Order("order_id", "U001", 1, "魔法杖", "魔法杖", "P001");
+        Order wand = new Order("order_id", "U001", 2, "魔法杖", "魔法杖", "P001");
         Order cloak = new Order("order_id", "U001", 1, "斗篷", "Harry Potter 今天下单", "P002");
         Order broomstick = new Order("order_id", "U001", 1, "飞行扫帚", "光速2000最新型号，速度超快", "P003");
         orders.add(wand);
